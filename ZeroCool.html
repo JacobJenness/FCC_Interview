@@ -1,0 +1,17 @@
+<script>
+  function zeroCool() {
+    let multipleA = 3;
+    let multipleB = 5;
+    for (var i = 1; i <= 100; i++) {
+      if (i % multipleA == 0 && i % multipleB == 0) {
+        console.log("ZeroCool");
+      } else if (i % multipleA == 0) {
+        console.log("Zero");
+      } else if (i % multipleB == 0) {
+        console.log("Cool");
+      } else {
+        console.log(i);
+      }
+    }
+  }
+</script>
