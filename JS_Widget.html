@@ -1,3 +1,44 @@
-<script>
-  //Stub for the JS widget
-</script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Widget</title>
+    <script>
+      //Custom Javascript Widget
+      // Create a custom widget using javascript starting with this structured JSON file: https://www.reddit.com/r/worldnews.json
+      // The finished widget should display some basic information about the first 5 items in the feed such as title, url, and domain.
+      // The widget should fit within a standard ad size of 300px wide by 600px tall.
+      // Design is up to you.  Creativity is encouraged.
+
+      function getJSON() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+            var data = JSON.parse(this.responseText);
+            var output = "";
+            for (var i = 0; i < 5; i++) {
+              output +=
+                "<a href='" +
+                data.data.children[i].data.url +
+                "'>" +
+                data.data.children[i].data.title +
+                "</a><br>";
+            }
+            document.getElementById("output").innerHTML = output;
+          }
+        };
+        xhttp.open("GET", "https://www.reddit.com/r/worldnews.json", true);
+        xhttp.send();
+      }
+    </script>
+  </head>
+  <body>
+    <div>
+      <h1>JavaScript Widget</h1>
+      <button onclick="getJSON()">Get News from r/WorldNews</button>
+      <div id="output"></div>
+    </div>
+  </body>
+</html>
