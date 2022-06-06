@@ -20,11 +20,31 @@
             var output = "";
             for (var i = 0; i < 5; i++) {
               output +=
+                "Post: " +
                 "<a href='" +
-                data.data.children[i].data.url +
+                "https://www.reddit.com" +
+                data.data.children[i].data.permalink +
                 "'>" +
                 data.data.children[i].data.title +
                 "</a><br>";
+              output +=
+                "Article: " +
+                "<a href='" +
+                data.data.children[i].data.url +
+                "'>" +
+                data.data.children[i].data.domain +
+                "</a><br>";
+              output +=
+                "Upvotes: " +
+                data.data.children[i].data.ups +
+                " (% upvoted) " +
+                data.data.children[i].data.upvote_ratio +
+                "<br>";
+              output +=
+                "Comments: " + data.data.children[i].data.num_comments + "<br>";
+              output +=
+                "Posted by: " + data.data.children[i].data.author + "<br>";
+              output += "<br>";
             }
             document.getElementById("output").innerHTML = output;
           }
@@ -38,6 +58,7 @@
     <div>
       <h1>JavaScript Widget</h1>
       <button onclick="getJSON()">Get News from r/WorldNews</button>
+      <br />
       <div id="output"></div>
     </div>
   </body>
